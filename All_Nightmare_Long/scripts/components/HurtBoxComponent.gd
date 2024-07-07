@@ -1,5 +1,5 @@
 extends Area2D
-class_name BaseHurtboxComponent
+class_name HurtboxComponent
 
 onready var health_component = get_node("HealthComponent");
 

@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/utils/Attack.gd"
 }, {
-"base": "Area2D",
-"class": "BaseHurtboxComponent",
-"language": "GDScript",
-"path": "res://scripts/components/HurtBoxComponent.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "BasePlayer",
 "language": "GDScript",
@@ -28,12 +23,23 @@ _global_script_classes=[ {
 "class": "HealthComponent",
 "language": "GDScript",
 "path": "res://scripts/components/HealthComponent.gd"
+}, {
+"base": "Area2D",
+"class": "HitBoxComponent",
+"language": "GDScript",
+"path": "res://scripts/components/HitBoxComponent.gd"
+}, {
+"base": "Area2D",
+"class": "HurtboxComponent",
+"language": "GDScript",
+"path": "res://scripts/components/HurtBoxComponent.gd"
 } ]
 _global_script_class_icons={
 "Attack": "",
-"BaseHurtboxComponent": "",
 "BasePlayer": "",
-"HealthComponent": ""
+"HealthComponent": "",
+"HitBoxComponent": "",
+"HurtboxComponent": ""
 }
 
 [application]

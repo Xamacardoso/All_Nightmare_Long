@@ -2,8 +2,6 @@ extends KinematicBody2D;
 class_name BasePlayer
 
 # Attributes
-
-export var hp : int = 3;
 export var velocity: float = 10;
 
 func _ready():
