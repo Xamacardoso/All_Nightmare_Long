@@ -1,0 +1,54 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://scripts/utils/Attack.gd"
+}, {
+"base": "Area2D",
+"class": "BaseHurtboxComponent",
+"language": "GDScript",
+"path": "res://scripts/components/HurtBoxComponent.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "BasePlayer",
+"language": "GDScript",
+"path": "res://scripts/entities/player/basePlayer.gd"
+}, {
+"base": "Node2D",
+"class": "HealthComponent",
+"language": "GDScript",
+"path": "res://scripts/components/HealthComponent.gd"
+} ]
+_global_script_class_icons={
+"Attack": "",
+"BaseHurtboxComponent": "",
+"BasePlayer": "",
+"HealthComponent": ""
+}
+
+[application]
+
+config/name="All Nightmare Long"
+config/icon="res://icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
