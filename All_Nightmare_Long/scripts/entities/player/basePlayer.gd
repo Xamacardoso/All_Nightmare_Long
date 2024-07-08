@@ -1,8 +1,15 @@
 extends KinematicBody2D;
 class_name BasePlayer
 
+# Onready variables
+onready var projectile = preload("res://scenes/combat/BoomerangProjectile.tscn");
+onready var boomerang = $Boomerang;
+
+##TODO fazer um bumerangue que some o sprite quando eu clico e outro que é um projetil que vai e volta.
+
 # Attributes
 export var velocity: float = 10;
+
 
 func _ready():
 	pass
@@ -19,6 +26,6 @@ func _handle_sprite(mov_vector):
 	if mov_vector != Vector2.ZERO:
 		pass
 	else:
-#		idle
-		pass
-	
+		pass;
+
+
