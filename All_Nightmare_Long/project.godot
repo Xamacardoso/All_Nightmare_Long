@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "BasePlayer",
 "language": "GDScript",
-"path": "res://scripts/entities/player/basePlayer.gd"
+"path": "res://scripts/entities/player/BasePlayer.gd"
 }, {
 "base": "Node2D",
 "class": "HealthComponent",
@@ -46,6 +46,10 @@ _global_script_class_icons={
 
 config/name="All Nightmare Long"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/singletons/Global.gd"
 
 [gui]
 
