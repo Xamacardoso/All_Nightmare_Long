@@ -23,7 +23,7 @@ func _physics_process(delta):
 	handle_shoot();
 	
 func _movement() -> Vector2:
-	var _mov = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down");
+	var _mov = Input.get_vector("left", "right", "up", "down");
 	_handle_sprite(_mov);
 	return _mov.normalized();
 	
