@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://shaders/screenBlur.gdshader" type="Shader" id=1]
+[ext_resource path="res://scripts/menus/pauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/menuInterface.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/blur_size = 3.0
+
+[node name="pauseScreen" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="overlay" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 375, 611 )
+color = Color( 1, 1, 1, 0.219608 )
+
+[node name="paperRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -78.0
+margin_right = 88.0
+margin_bottom = -78.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="pauseMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="pauseButtons" type="VBoxContainer" parent="pauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -22.0
+margin_right = 49.0
+margin_bottom = 22.0
+
+[node name="resumeButton" type="Button" parent="pauseMenu/pauseButtons"]
+margin_right = 98.0
+margin_bottom = 20.0
+text = "Voltar ao Jogo"
+
+[node name="settingsButton" type="Button" parent="pauseMenu/pauseButtons"]
+margin_top = 24.0
+margin_right = 98.0
+margin_bottom = 44.0
+text = "Opções"
+
+[node name="settingsMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="settingsButtons" type="VBoxContainer" parent="settingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = -22.0
+margin_right = 38.5
+margin_bottom = 22.0
+
+[node name="fullscreen" type="Button" parent="settingsMenu/settingsButtons"]
+margin_right = 77.0
+margin_bottom = 20.0
+text = "Tela Cheia"
+
+[node name="back" type="Button" parent="settingsMenu/settingsButtons"]
+margin_top = 24.0
+margin_right = 77.0
+margin_bottom = 44.0
+text = "Voltar"
+
+[connection signal="pressed" from="pauseMenu/pauseButtons/resumeButton" to="." method="_on_resumeButton_pressed"]
+[connection signal="pressed" from="pauseMenu/pauseButtons/settingsButton" to="." method="_on_settingsButton_pressed"]
+[connection signal="pressed" from="settingsMenu/settingsButtons/fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="settingsMenu/settingsButtons/back" to="." method="_on_back_pressed"]

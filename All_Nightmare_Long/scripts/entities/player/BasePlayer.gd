@@ -48,7 +48,6 @@ func handle_shoot():
 		is_firing = true;
 		shooting_direction = get_local_mouse_position();
 		shoot_boomerang();
-		print(shooting_direction)
 	
 	if !is_firing:
 		boomerang.visible = true;
