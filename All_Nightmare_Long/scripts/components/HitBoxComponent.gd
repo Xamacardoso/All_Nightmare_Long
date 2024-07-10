@@ -10,4 +10,4 @@ func _on_Area2D_area_entered(area):
 	if area is HurtboxComponent:
 		var _attack = Attack.new();
 		_attack.attack_damage = get_parent().damage;
-		area.take_damage();
+		area.take_damage(_attack);
