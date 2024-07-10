@@ -8,12 +8,10 @@ var throwing : bool;
 var shoot_position;
 
 func _ready():
-	shoot_position= self.global_position;
-	throwing = true;
-	print(player);
-	print(player.shooting_direction.normalized());
+	shoot_position = self.global_position; # position where player shot
+	throwing = true; # the boomerang is being thrown, flying in the air
 	
-## TODO fazer o bumerangue ir ou voltar
+
 func _physics_process(_delta):
 	if throwing and bounces:
 		move_and_slide(player.shooting_direction.normalized() * velocity);
@@ -22,14 +20,11 @@ func _physics_process(_delta):
 		rotate(6.9)
 	else:
 		rotate(-7)
-		var _vector_to_player = player.global_position - self.global_position
+		var _vector_to_player = player.global_position - self.global_position # gets the vector between itself and the player
 		move_and_slide((player.global_position - self.global_position).normalized() * (velocity + 200));
 		if _vector_to_player.length() < 30:
 			player.is_firing = false;
 			queue_free();
-
-
-
 
 
 func _on_HitBoxComponent_area_entered(area):
