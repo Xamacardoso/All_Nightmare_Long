@@ -3,40 +3,42 @@ extends Node2D
 onready var menuCamera = $Camera2D;
 onready var mainMenu = $mainMenu;
 onready var settingsMenu = $settingsMenu;
-var selectedMenuIndex: int = 0;
-var menus: Array = [];
-
+var targetMenu: Control
+onready var newGameButton = $mainMenu/buttons/newGameButton
+onready var backButton = $settingsMenu/buttons/backButton
+onready var settingsButton = $mainMenu/buttons/settingsButton
 
 func _ready():
 	menuCamera.current; #Make the camera as current
-	menuCamera.global_position = Vector2.ZERO; #Set the camera position to main menu position
-	createMenusArray();
+	targetMenu = mainMenu; #Set the camera position to main menu position
+	setFocusedButton(newGameButton);
 
 func _process(delta):
 	setSelectedMenu();
 
-##Add the control menus to an array
-func createMenusArray() -> void:
-	for child in get_children():
-		if child is Control:
-			menus.append(child);
-
-#Sets the camera position based on the selected menu
+#Sets the camera position based on the target menu
 func setSelectedMenu() -> void:
-	var selectedMenu = menus[selectedMenuIndex];
-	var selectedMenuPosition = selectedMenu.rect_global_position;
+	var selectedMenuPosition = targetMenu.rect_global_position;
 	menuCamera.global_position = lerp(menuCamera.global_position, selectedMenuPosition, 0.05);
 
-func changeSelectedIndex() -> void:
-	selectedMenuIndex += 1;
-	if selectedMenuIndex > (menus.size() - 1):
-		selectedMenuIndex = 0;
-
+##Sets the target menu as settings menu
 func _on_settingsButton_pressed():
-	changeSelectedIndex()
+	targetMenu = settingsMenu;
+	setFocusedButton(backButton);
 
+##Sets the target menu as main menu
 func _on_backButton_pressed():
-	changeSelectedIndex()
+	targetMenu = mainMenu;
+	setFocusedButton(settingsButton);
 
+##Exit of the game
 func _on_exitButton_pressed():
-	get_tree().quit()
+	get_tree().quit();
+
+##Sets the focused button
+func setFocusedButton(button: Button) -> void:
+	button.grab_focus();
+
+##Change the fullscreen mode when button is clicked
+func _on_fullscreenButton_pressed():
+	Global.toggleFullscreenMode();

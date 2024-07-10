@@ -64,7 +64,7 @@ margin_bottom = 22.0
 [node name="fullscreenButton" type="Button" parent="settingsMenu/buttons"]
 margin_right = 143.0
 margin_bottom = 20.0
-text = "Fullscreen"
+text = "Tela Cheia"
 
 [node name="backButton" type="Button" parent="settingsMenu/buttons"]
 margin_top = 24.0
@@ -78,4 +78,5 @@ current = true
 
 [connection signal="pressed" from="mainMenu/buttons/settingsButton" to="." method="_on_settingsButton_pressed"]
 [connection signal="pressed" from="mainMenu/buttons/exitButton" to="." method="_on_exitButton_pressed"]
+[connection signal="pressed" from="settingsMenu/buttons/fullscreenButton" to="." method="_on_fullscreenButton_pressed"]
 [connection signal="pressed" from="settingsMenu/buttons/backButton" to="." method="_on_backButton_pressed"]

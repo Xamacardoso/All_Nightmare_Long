@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dummy.png-e7ffcfc85011d56545418e29d1602057.stex"
+path="res://.import/carta.png-c027ec62f89b7c6b714d302f713d5793.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dummy.png"
-dest_files=[ "res://.import/dummy.png-e7ffcfc85011d56545418e29d1602057.stex" ]
+source_file="res://assets/ui/carta.png"
+dest_files=[ "res://.import/carta.png-c027ec62f89b7c6b714d302f713d5793.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

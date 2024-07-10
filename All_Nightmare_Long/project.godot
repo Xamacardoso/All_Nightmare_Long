@@ -45,6 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="All Nightmare Long"
+run/main_scene="res://scenes/menus/startMenu.tscn"
 
 [autoload]
 
