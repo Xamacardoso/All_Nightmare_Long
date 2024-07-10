@@ -12,7 +12,7 @@ var shooting_direction;
 
 # Attributes
 export var velocity: float = 10;
-
+export var damage: float = 5;
 
 
 func _ready():
