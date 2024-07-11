@@ -1,5 +1,5 @@
 extends KinematicBody2D
-onready var player = get_parent().get_node("DummyPlayer");
+onready var player = get_parent().get_node("Player");
 
 export var velocity = 600;
 export var throw_range = 300;
