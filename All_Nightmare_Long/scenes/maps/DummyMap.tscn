@@ -1,13 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/DummyPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/DummyEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/DummyEnemy_2.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="DummyPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( -60, 22 )
 
 [node name="DummyEnemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 109, 32 )
@@ -16,3 +13,9 @@ speed = 50
 [node name="DummyEnemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 511, 141 )
 speed = 65
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[editable path="DummyEnemy2"]
+[editable path="DummyEnemy2/HitBoxComponent"]
+[editable path="DummyEnemy2/HurtBoxComponent"]
