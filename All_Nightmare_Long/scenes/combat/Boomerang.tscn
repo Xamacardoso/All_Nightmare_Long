@@ -10,5 +10,5 @@ script = ExtResource( 1 )
 show_behind_parent = true
 
 [node name="Sprite" type="Sprite" parent="Pivot"]
-position = Vector2( 32, 0 )
+position = Vector2( 34, 1 )
 texture = ExtResource( 2 )

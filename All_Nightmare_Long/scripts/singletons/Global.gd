@@ -1,6 +1,8 @@
 extends Node
 
 var transitionScene
+var player: BasePlayer
+var playerHasBoomerang: bool = false
 
 func _ready():
 	applyCustomMouseCursor();

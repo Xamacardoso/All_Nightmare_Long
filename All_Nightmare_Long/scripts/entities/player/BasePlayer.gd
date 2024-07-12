@@ -16,7 +16,11 @@ var shooting_direction;
 export var velocity: float = 10;
 export var damage: float = 5;
 
+func _ready():
+	Global.player = self
+
 func _physics_process(delta):
+	hasBoomerang = Global.playerHasBoomerang
 	move_and_slide(_movement() * velocity);
 	handle_shoot();
 	
@@ -69,6 +73,6 @@ func die():
 	$HurtBoxComponent.queue_free();
 	set_physics_process(false);
 	yield(sprite, "animation_finished");
-	get_tree().change_scene("res://scenes/menus/startMenu.tscn");
+	Global.changeScene("res://scenes/menus/startMenu.tscn")
 	
 	

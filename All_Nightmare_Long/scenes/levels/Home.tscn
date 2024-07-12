@@ -857,7 +857,7 @@ shadow_filter = 2
 current = true
 
 [node name="CollectableBoomerang" type="Area2D" parent="."]
-position = Vector2( 760, -72 )
+position = Vector2( 767, 79 )
 
 [node name="Sprite" type="Sprite" parent="CollectableBoomerang"]
 texture = ExtResource( 8 )

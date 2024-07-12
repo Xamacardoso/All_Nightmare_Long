@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://shaders/screenBlur.gdshader" type="Shader" id=1]
 [ext_resource path="res://scripts/menus/pauseMenu.gd" type="Script" id=2]
@@ -7,6 +7,49 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
 shader_param/blur_size = 1.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("paperRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 175, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "showMenu"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("paperRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 175, 0 ), Vector2( 175, 160 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("paperRect:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
 
 [node name="pauseScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -24,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -88.0
-margin_top = -78.0
-margin_right = 87.0
-margin_bottom = 82.0
+margin_left = 424.0
+margin_top = 300.0
+margin_right = 599.0
+margin_bottom = 300.0
 texture = ExtResource( 3 )
 expand = true
 
@@ -93,6 +136,10 @@ margin_top = 24.0
 margin_right = 77.0
 margin_bottom = 44.0
 text = "Voltar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/showMenu = SubResource( 4 )
 
 [connection signal="pressed" from="pauseMenu/pauseButtons/resumeButton" to="." method="_on_resumeButton_pressed"]
 [connection signal="pressed" from="pauseMenu/pauseButtons/settingsButton" to="." method="_on_settingsButton_pressed"]
