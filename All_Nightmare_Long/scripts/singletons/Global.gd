@@ -1,5 +1,6 @@
 extends Node
 
+var transitionScene
 
 func _ready():
 	applyCustomMouseCursor();
@@ -16,3 +17,8 @@ func applyCustomMouseCursor():
 ##Change the game screen mode
 func toggleFullscreenMode() -> void:
 	OS.window_fullscreen = not OS.window_fullscreen;
+
+func changeScene(targetScene: String) -> void:
+	transitionScene.isSceneChanging = true
+	yield(get_tree().create_timer(0.5), "timeout")
+	get_tree().change_scene(targetScene)

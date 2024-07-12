@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Walls_sides_other.png-28c76d0e887cea11381840523e31160b.stex"
+path="res://.import/lightFilter.jpg-a7d7dfd8979358572f15dd5e8881c7ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/Walls_sides_other.png"
-dest_files=[ "res://.import/Walls_sides_other.png-28c76d0e887cea11381840523e31160b.stex" ]
+source_file="res://assets/tileset/lightFilter.jpg"
+dest_files=[ "res://.import/lightFilter.jpg-a7d7dfd8979358572f15dd5e8881c7ae.stex" ]
 
 [params]
 

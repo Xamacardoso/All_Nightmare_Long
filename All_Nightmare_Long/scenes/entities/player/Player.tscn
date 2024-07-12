@@ -188,13 +188,14 @@ velocity = 125.0
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
-animation = "die"
-frame = 20
+animation = "idle"
+frame = 1
 playing = true
 
 [node name="Boomerang" parent="." instance=ExtResource( 3 )]
 
 [node name="HurtBoxComponent" parent="." instance=ExtResource( 5 )]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="HurtBoxComponent" index="0"]
@@ -202,6 +203,7 @@ position = Vector2( 0, 5 )
 shape = SubResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 13 )
 shape = SubResource( 17 )
 

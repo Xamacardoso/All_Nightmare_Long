@@ -1,25 +1,36 @@
 extends CanvasLayer
 
+signal paperOpened
+signal paperClosed
 var buttons: Array = []
 var menus: Array = []
 onready var settingsMenu = $settingsMenu
 var isGamePaused: bool = false
 onready var resumeButton = $pauseMenu/pauseButtons/resumeButton
+onready var paperRect = $paperRect
+var canShowMenu: bool = false
 
 
 func _ready():
 	createButtonArray()
 	resumeGame()
-	
+	paperRect.rect_size.y = 0
 	settingsMenu.hide()
+	connect("paperClosed", self, "resumeGame")
 
-##Pause or resume game when cancel input is pressed
+func _process(delta):
+	if isGamePaused:
+		paperAnimation("open")
+	else:
+		paperAnimation("close")
+
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if isGamePaused:
-			resumeGame()
+			resumeGame();
+			paperAnimation("close")
 		else:
-			pauseGame()
+			pauseGame();
 
 ##Add all the child buttons to the buttons array
 func createButtonArray() -> void:
@@ -36,15 +47,30 @@ func disableButtons() -> void:
 func pauseGame() -> void:
 	get_tree().paused = true;
 	show();
-	resumeButton.grab_focus()
+	resumeButton.grab_focus();
 	isGamePaused = true;
 
 ##Set the game pause state to false
 func resumeGame() -> void:
 	get_tree().paused = false;
-	hide()
+	if paperRect.rect_size.y < 1:
+		hide()
 	disableButtons();
-	isGamePaused = false;
 
 func _on_resumeButton_pressed():
-	resumeGame();
+	paperAnimation("close")
+
+##Animate the background paper
+func paperAnimation(type: String) -> void:
+	match type:
+		"open":
+			paperRect.rect_size.y = lerp(paperRect.rect_size.y, 160, 0.05);
+			if paperRect.rect_size.y > 156:
+				emit_signal("paperOpened")
+				set_process(false)
+		"close":
+			paperRect.rect_size.y = lerp(paperRect.rect_size.y, 0, 0.05);
+			isGamePaused = false;
+			if paperRect.rect_size.y < 1:
+				emit_signal("paperClosed")
+			set_process(true)

@@ -8,16 +8,13 @@ onready var sprite: AnimatedSprite = $Sprite;
 
 # Other variables
 var is_firing: bool;
+var hasBoomerang: bool = false;
 var shooting_direction;
 
 
 # Attributes
 export var velocity: float = 10;
 export var damage: float = 5;
-
-
-func _ready():
-	pass
 
 func _physics_process(delta):
 	move_and_slide(_movement() * velocity);
@@ -42,21 +39,23 @@ func _handle_sprite(mov_vector):
 
 ## Shoots the boomerang;
 func shoot_boomerang():
-	var _boomerang_projectile = projectile.instance();
-	_boomerang_projectile.global_position = boomerang.sprite.global_position;
-	_boomerang_projectile.rotation = boomerang.global_rotation;
-	var shoot_position = _boomerang_projectile.global_position;
-	get_parent().add_child(_boomerang_projectile);
+	if hasBoomerang:
+		var _boomerang_projectile = projectile.instance();
+		_boomerang_projectile.global_position = boomerang.sprite.global_position;
+		_boomerang_projectile.rotation = boomerang.global_rotation;
+		var shoot_position = _boomerang_projectile.global_position;
+		get_parent().add_child(_boomerang_projectile);
 
 	
 ## Handles shooting mechanic, when the player can or can't shoot
 func handle_shoot():
 	if Input.is_action_just_pressed("shoot") and !is_firing:
-		is_firing = true;
-		shooting_direction = get_local_mouse_position();
-		shoot_boomerang();
+		if hasBoomerang:
+			is_firing = true;
+			shooting_direction = get_local_mouse_position();
+			shoot_boomerang();
 	
-	if !is_firing:
+	if !is_firing and hasBoomerang:
 		boomerang.visible = true;
 		boomerang.look_at(get_global_mouse_position()); # Olha pra a posicao do mouse
 	else:

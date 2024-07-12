@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
-shader_param/blur_size = 3.0
+shader_param/blur_size = 1.0
 
 [node name="pauseScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -26,8 +26,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -88.0
 margin_top = -78.0
-margin_right = 88.0
-margin_bottom = -78.0
+margin_right = 87.0
+margin_bottom = 82.0
 texture = ExtResource( 3 )
 expand = true
 
@@ -63,6 +63,7 @@ margin_bottom = 44.0
 text = "Opções"
 
 [node name="settingsMenu" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
