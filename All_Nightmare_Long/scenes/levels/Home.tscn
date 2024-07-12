@@ -843,7 +843,7 @@ shadow_enabled = true
 shadow_filter = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 289, 514 )
+position = Vector2( 285, 498 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
 position = Vector2( 0, -3 )
@@ -897,6 +897,8 @@ visible = false
 polygon = PoolVector2Array( 704, 160, 832, 160, 832, 144, 976, 144, 976, -360, 600, -360, 600, 128, 704, 128 )
 
 [connection signal="body_entered" from="CollectableBoomerang" to="." method="_on_Boomerang_body_entered"]
+[connection signal="body_entered" from="Canvas/hiddenAreas/hiddenArea2" to="." method="_on_hiddenArea2_body_entered"]
+[connection signal="body_exited" from="Canvas/hiddenAreas/hiddenArea2" to="." method="_on_hiddenArea2_body_exited"]
 
 [editable path="Canvas/hiddenAreas/hiddenArea"]
 [editable path="Canvas/hiddenAreas/hiddenArea2"]

@@ -42,3 +42,6 @@ func setFocusedButton(button: Button) -> void:
 ##Change the fullscreen mode when button is clicked
 func _on_fullscreenButton_pressed():
 	Global.toggleFullscreenMode();
+
+func _on_newGameButton_pressed():
+	Global.changeScene("res://scenes/levels/Home.tscn")
