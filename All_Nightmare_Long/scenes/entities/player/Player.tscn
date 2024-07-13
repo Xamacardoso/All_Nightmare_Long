@@ -180,7 +180,7 @@ radius = 20.025
 
 [sub_resource type="CircleShape2D" id=17]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_mask = 0
 script = ExtResource( 1 )
 velocity = 125.0
@@ -188,8 +188,8 @@ velocity = 125.0
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
-animation = "die"
-frame = 20
+animation = "idle"
+frame = 1
 playing = true
 
 [node name="Boomerang" parent="." instance=ExtResource( 3 )]
@@ -201,7 +201,11 @@ collision_mask = 0
 position = Vector2( 0, 5 )
 shape = SubResource( 16 )
 
+[node name="HealthComponent" parent="HurtBoxComponent" index="1"]
+MAX_HEALTH = 5
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 13 )
 shape = SubResource( 17 )
 

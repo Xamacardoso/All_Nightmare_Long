@@ -11,7 +11,6 @@ var shoot_position;
 func _ready():
 	shoot_position = self.global_position; # position where player shot
 	throwing = true; # the boomerang is being thrown, flying in the air
-	
 
 func _physics_process(_delta):
 	if (throwing and bounces>0): # when boomerang is going
@@ -30,3 +29,8 @@ func _physics_process(_delta):
 ## When boomerang hits something
 func _on_HitBoxComponent_area_entered(area):
 	bounces = 0
+
+func _on_Area2D_body_entered(body):
+	if body == player:
+		player.is_firing = false
+		queue_free()

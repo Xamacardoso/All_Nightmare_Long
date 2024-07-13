@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://shaders/Shaders_Transition.tres" type="Shader" id=1]
+[ext_resource path="res://scripts/menus/transition.gd" type="Script" id=2]
+[ext_resource path="res://assets/tileset/transitionRect.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/screen_width = 1024.0
+shader_param/screen_height = 600.0
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/player = Vector2( 0.5, 0.5 )
+shader_param/progress = 1.0
+shader_param/pixel_size = 30.0
+shader_param/circle_size = 1.5
+shader_param/curtains = 1.0
+shader_param/type = 0
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/menus/startMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menus/transition.tscn" type="PackedScene" id=2]
 
 [node name="startMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -76,6 +77,9 @@ text = "Voltar ao men inicial"
 anchor_mode = 0
 current = true
 
+[node name="Transition" parent="." instance=ExtResource( 2 )]
+
+[connection signal="pressed" from="mainMenu/buttons/newGameButton" to="." method="_on_newGameButton_pressed"]
 [connection signal="pressed" from="mainMenu/buttons/settingsButton" to="." method="_on_settingsButton_pressed"]
 [connection signal="pressed" from="mainMenu/buttons/exitButton" to="." method="_on_exitButton_pressed"]
 [connection signal="pressed" from="settingsMenu/buttons/fullscreenButton" to="." method="_on_fullscreenButton_pressed"]

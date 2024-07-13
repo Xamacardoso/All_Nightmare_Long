@@ -61,6 +61,7 @@ Global="*res://scripts/singletons/Global.gd"
 
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 
