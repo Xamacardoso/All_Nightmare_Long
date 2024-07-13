@@ -15,3 +15,5 @@ func take_damage(attack: Attack):
 		var _grandparent = (get_parent()).get_parent();
 		if _grandparent.has_method("die"):
 			_grandparent.die();
+	
+	

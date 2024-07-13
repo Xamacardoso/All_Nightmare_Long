@@ -5,6 +5,7 @@ class_name BasePlayer
 onready var projectile = preload("res://scenes/combat/BoomerangProjectile.tscn");
 onready var boomerang = $Boomerang;
 onready var sprite: AnimatedSprite = $Sprite;
+onready var hurtbox = $HurtBoxComponent
 
 # Other variables
 var is_firing: bool;
@@ -74,5 +75,4 @@ func die():
 	set_physics_process(false);
 	yield(sprite, "animation_finished");
 	Global.changeScene("res://scenes/menus/startMenu.tscn")
-	
 	
