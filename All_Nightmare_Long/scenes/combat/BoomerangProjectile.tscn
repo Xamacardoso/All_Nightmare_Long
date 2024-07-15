@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/combat/BoomerangProjectile.gd" type="Script" id=1]
 [ext_resource path="res://assets/combat/weapon/boomerang.png" type="Texture" id=2]
 [ext_resource path="res://scenes/components/HitBoxComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/BoomerangParticles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -40,6 +41,8 @@ collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 4 )]
 
 [connection signal="area_entered" from="HitBoxComponent" to="." method="_on_HitBoxComponent_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
