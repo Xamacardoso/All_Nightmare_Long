@@ -189,7 +189,6 @@ velocity = 125.0
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Boomerang" parent="." instance=ExtResource( 3 )]
@@ -208,5 +207,7 @@ MAX_HEALTH = 5
 visible = false
 position = Vector2( 0, 13 )
 shape = SubResource( 17 )
+
+[connection signal="parent_damaged" from="HurtBoxComponent" to="." method="_on_damage"]
 
 [editable path="HurtBoxComponent"]

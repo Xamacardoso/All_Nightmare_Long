@@ -6,6 +6,7 @@ onready var projectile = preload("res://scenes/combat/BoomerangProjectile.tscn")
 onready var boomerang = $Boomerang;
 onready var sprite: AnimatedSprite = $Sprite;
 onready var hurtbox = $HurtBoxComponent
+onready var my_material = sprite.material
 
 # Other variables
 var is_firing: bool;
@@ -19,6 +20,7 @@ export var damage: float = 5;
 
 func _ready():
 	Global.player = self
+
 
 func _physics_process(delta):
 	hasBoomerang = Global.playerHasBoomerang
@@ -76,3 +78,15 @@ func die():
 	yield(sprite, "animation_finished");
 	Global.changeScene("res://scenes/menus/startMenu.tscn")
 	
+
+
+
+
+func _on_damage(max_health, health):
+	var _hit_material = load("res://shaders/hit_flash.tres");
+	sprite.material = ShaderMaterial.new();
+	sprite.material.shader = _hit_material;
+	sprite.material.set_shader_param("flash_color", Color.white);
+	var _tween = get_tree().create_tween();
+	_tween.tween_property(sprite.material, "shader_param/flash_value", 1.0, 0.05);
+	_tween.tween_property(sprite.material, "shader_param/flash_value", 0, 0.3);
