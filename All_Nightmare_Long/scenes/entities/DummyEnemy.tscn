@@ -75,5 +75,7 @@ collision_mask = 0
 position = Vector2( 1, 0 )
 shape = SubResource( 10 )
 
+[connection signal="parent_damaged" from="HurtBoxComponent" to="." method="_on_HurtBoxComponent_parent_damaged"]
+
 [editable path="HitBoxComponent"]
 [editable path="HurtBoxComponent"]

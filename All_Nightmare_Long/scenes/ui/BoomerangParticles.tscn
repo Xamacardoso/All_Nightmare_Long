@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/tileset/lightFilter.jpg" type="Texture" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 11.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.69
+angular_velocity_random = 0.83
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_random = 1.0
+
+[node name="Particles2D" type="Particles2D"]
+amount = 9
+lifetime = 0.7
+speed_scale = 3.46
+local_coords = false
+process_material = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+energy = 0.7
