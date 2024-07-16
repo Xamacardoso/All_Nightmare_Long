@@ -1,54 +1,222 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://shaders/screenBlur.gdshader" type="Shader" id=1]
 [ext_resource path="res://scripts/menus/pauseMenu.gd" type="Script" id=2]
-[ext_resource path="res://assets/ui/menuInterface.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/hud/gui/GUI.png" type="Texture" id=3]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
 shader_param/blur_size = 1.0
 
-[sub_resource type="Animation" id=3]
-length = 0.001
+[sub_resource type="Animation" id=5]
+resource_name = "close"
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("paperRect:rect_size")
+tracks/0/path = NodePath("paperRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 175, 0 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "showMenu"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("paperRect:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 175, 0 ), Vector2( 175, 160 ) ]
+"values": [ Vector2( 7, 7 ), Vector2( 7, 7 ), Vector2( 7, 1e-05 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("paperRect:margin_top")
+tracks/1/path = NodePath("pauseMenu/pauseButtons/resumeButton:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0.0 ]
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pauseMenu/pauseButtons/settingsButton:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "closeSettings"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("pauseMenu/pauseButtons/resumeButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pauseMenu/pauseButtons/settingsButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("paperRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 7 ), Vector2( 7, 1e-05 ), Vector2( 7, 1e-05 ), Vector2( 7, 7 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("settingsMenu/settingsButtons/fullscreen:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("settingsMenu/settingsButtons/back:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("paperRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 1e-05 ), Vector2( 7, 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pauseMenu/pauseButtons/resumeButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pauseMenu/pauseButtons/settingsButton:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "openSettings"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("pauseMenu/pauseButtons/resumeButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pauseMenu/pauseButtons/settingsButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("paperRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 7 ), Vector2( 7, 1e-05 ), Vector2( 7, 1e-05 ), Vector2( 7, 7 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("settingsMenu/settingsButtons/fullscreen:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("settingsMenu/settingsButtons/back:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="pauseScreen" type="CanvasLayer"]
@@ -62,17 +230,12 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 375, 611 )
 color = Color( 1, 1, 1, 0.219608 )
 
-[node name="paperRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 424.0
-margin_top = 300.0
-margin_right = 599.0
-margin_bottom = 300.0
+[node name="paperRect" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 7, 7 )
 texture = ExtResource( 3 )
-expand = true
+region_enabled = true
+region_rect = Rect2( 96, 0, 24, 24 )
 
 [node name="pauseMenu" type="Control" parent="."]
 anchor_left = 0.5
@@ -106,7 +269,6 @@ margin_bottom = 44.0
 text = "Opções"
 
 [node name="settingsMenu" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -127,21 +289,26 @@ margin_right = 38.5
 margin_bottom = 22.0
 
 [node name="fullscreen" type="Button" parent="settingsMenu/settingsButtons"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 77.0
 margin_bottom = 20.0
 text = "Tela Cheia"
 
 [node name="back" type="Button" parent="settingsMenu/settingsButtons"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 24.0
 margin_right = 77.0
 margin_bottom = 44.0
 text = "Voltar"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 3 )
-anims/showMenu = SubResource( 4 )
+anims/close = SubResource( 5 )
+anims/closeSettings = SubResource( 8 )
+anims/open = SubResource( 4 )
+anims/openSettings = SubResource( 7 )
 
 [connection signal="pressed" from="pauseMenu/pauseButtons/resumeButton" to="." method="_on_resumeButton_pressed"]
 [connection signal="pressed" from="pauseMenu/pauseButtons/settingsButton" to="." method="_on_settingsButton_pressed"]
 [connection signal="pressed" from="settingsMenu/settingsButtons/fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="settingsMenu/settingsButtons/back" to="." method="_on_back_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

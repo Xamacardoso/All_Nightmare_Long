@@ -1,34 +1,22 @@
 extends CanvasLayer
 
-signal paperOpened
-signal paperClosed
 var buttons: Array = []
-var menus: Array = []
-onready var settingsMenu = $settingsMenu
 var isGamePaused: bool = false
+onready var animation = $AnimationPlayer
 onready var resumeButton = $pauseMenu/pauseButtons/resumeButton
-onready var paperRect = $paperRect
-var canShowMenu: bool = false
+onready var backButton = $settingsMenu/settingsButtons/back
+onready var settingsMenu = $settingsMenu
+onready var pauseMenu = $pauseMenu
 
 
 func _ready():
-	createButtonArray()
-	resumeGame()
-	paperRect.rect_size.y = 0
-	settingsMenu.hide()
-	connect("paperClosed", self, "resumeGame")
-
-func _process(delta):
-	if isGamePaused:
-		paperAnimation("open")
-	else:
-		paperAnimation("close")
+	hide()
+	createButtonArray();
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if isGamePaused:
 			resumeGame();
-			paperAnimation("close")
 		else:
 			pauseGame();
 
@@ -45,32 +33,42 @@ func disableButtons() -> void:
 
 ##Set the pause game state to true
 func pauseGame() -> void:
-	get_tree().paused = true;
-	show();
-	resumeButton.grab_focus();
-	isGamePaused = true;
+	show()
+	settingsMenu.hide()
+	animation.play("open")
 
 ##Set the game pause state to false
 func resumeGame() -> void:
-	get_tree().paused = false;
-	if paperRect.rect_size.y < 1:
-		hide()
+	animation.play("close")
 	disableButtons();
 
-func _on_resumeButton_pressed():
-	paperAnimation("close")
+func openSettings() -> void:
+	settingsMenu.show()
+	animation.play("openSettings")
 
-##Animate the background paper
-func paperAnimation(type: String) -> void:
-	match type:
+func _on_resumeButton_pressed():
+	resumeGame()
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
 		"open":
-			paperRect.rect_size.y = lerp(paperRect.rect_size.y, 160, 0.05);
-			if paperRect.rect_size.y > 156:
-				emit_signal("paperOpened")
-				set_process(false)
+			isGamePaused = true
+			resumeButton.grab_focus()
+			get_tree().paused = true
 		"close":
-			paperRect.rect_size.y = lerp(paperRect.rect_size.y, 0, 0.05);
-			isGamePaused = false;
-			if paperRect.rect_size.y < 1:
-				emit_signal("paperClosed")
-			set_process(true)
+			isGamePaused = false
+			hide()
+			get_tree().paused = false
+		"openSettings":
+			backButton.grab_focus()
+		"closeSettings":
+			resumeButton.grab_focus()
+
+func _on_settingsButton_pressed():
+	openSettings()
+
+func _on_back_pressed():
+	animation.play("closeSettings")
+
+func _on_fullscreen_pressed():
+	Global.toggleFullscreenMode()

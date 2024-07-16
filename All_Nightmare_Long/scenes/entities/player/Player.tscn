@@ -189,7 +189,6 @@ velocity = 125.0
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Boomerang" parent="." instance=ExtResource( 3 )]
@@ -198,11 +197,9 @@ playing = true
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="HurtBoxComponent" index="0"]
+visible = false
 position = Vector2( 0, 5 )
 shape = SubResource( 16 )
-
-[node name="HealthComponent" parent="HurtBoxComponent" index="1"]
-MAX_HEALTH = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

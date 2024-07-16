@@ -4,28 +4,34 @@ onready var player = $Player
 onready var sonBedroom = $Canvas/hiddenAreas/hiddenArea2
 onready var camera = $Player/Camera2D
 var isPlayerOnBedroom: bool = false
+onready var collectableBoomerang: Area2D = $CollectableBoomerang;
+onready var portal = $Portal
 
+onready var button = $Button
 
 func _on_Boomerang_body_entered(body):
 	if body is BasePlayer:
 		Global.playerHasBoomerang = true;
-		$CollectableBoomerang.queue_free();
+		collectableBoomerang.queue_free();
 
 func _process(delta):
-	##DEBUG
-	if Input.is_action_just_pressed("ui_end"):
-		Global.changeScene("res://scenes/levels/Level1.tscn")
-	
-	
-	if isPlayerOnBedroom:
-		camera.zoom = lerp(camera.zoom, Vector2(0.5,0.5), 0.005)
-	else:
-		camera.zoom = lerp(camera.zoom, Vector2(1,1), 0.005)
+	setCameraProperties()
 
 func _on_hiddenArea2_body_entered(body):
 	if body is BasePlayer:
-		isPlayerOnBedroom = true
+		isPlayerOnBedroom = true;
 
 func _on_hiddenArea2_body_exited(body):
 	if body is BasePlayer:
-		isPlayerOnBedroom = false
+		isPlayerOnBedroom = false;
+
+func setCameraProperties() -> void:
+	if isPlayerOnBedroom:
+		camera.zoom = lerp(camera.zoom, Vector2(0.5,0.5), 0.005);
+		var _playerDistance = portal.global_position.distance_to(player.global_position)
+		if _playerDistance < 150:
+			var offset = ((151 - _playerDistance) / 25)
+			camera.offset.x = rand_range(0, offset)
+	else:
+		camera.zoom = lerp(camera.zoom, Vector2(1,1), 0.005);
+		camera.offset = Vector2.ZERO

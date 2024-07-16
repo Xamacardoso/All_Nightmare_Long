@@ -44,4 +44,4 @@ func _on_fullscreenButton_pressed():
 	Global.toggleFullscreenMode();
 
 func _on_newGameButton_pressed():
-	Global.changeScene("res://scenes/levels/Home.tscn")
+	Global.changeScene("res://scenes/maps/Home.tscn")
