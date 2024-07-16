@@ -43,6 +43,7 @@ radius = 13.0
 
 [node name="DummyEnemy" type="KinematicBody2D"]
 script = ExtResource( 4 )
+speed = 140
 damage = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -70,6 +71,11 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="HurtBoxComponent" index="0"]
 position = Vector2( 1, 0 )
 shape = SubResource( 10 )
+
+[node name="HealthComponent" parent="HurtBoxComponent" index="1"]
+MAX_HEALTH = 10
+
+[connection signal="parent_damaged" from="HurtBoxComponent" to="." method="_on_HurtBoxComponent_parent_damaged"]
 
 [editable path="HitBoxComponent"]
 [editable path="HurtBoxComponent"]

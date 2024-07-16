@@ -51,7 +51,10 @@ _global_script_class_icons={
 [application]
 
 config/name="All Nightmare Long"
-run/main_scene="res://scenes/menus/startMenu.tscn"
+run/main_scene="res://scenes/maps/Home.tscn"
+boot_splash/image="res://assets/ui/logo/Labiras_Logo.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 
 [autoload]
 

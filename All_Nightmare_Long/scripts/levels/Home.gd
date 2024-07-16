@@ -6,8 +6,9 @@ onready var camera = $Player/Camera2D
 var isPlayerOnBedroom: bool = false
 onready var collectableBoomerang: Area2D = $CollectableBoomerang;
 onready var portal = $Portal
+onready var letterCanvas = $Canvas/LetterCanvas
+onready var letterArea = $LetterArea
 
-onready var button = $Button
 
 func _on_Boomerang_body_entered(body):
 	if body is BasePlayer:
@@ -16,6 +17,9 @@ func _on_Boomerang_body_entered(body):
 
 func _process(delta):
 	setCameraProperties()
+	
+	if letterArea.overlaps_body(player):
+		letterArea.monitoring = false
 
 func _on_hiddenArea2_body_entered(body):
 	if body is BasePlayer:
@@ -35,3 +39,8 @@ func setCameraProperties() -> void:
 	else:
 		camera.zoom = lerp(camera.zoom, Vector2(1,1), 0.005);
 		camera.offset = Vector2.ZERO
+
+func _on_Letter_body_entered(body):
+	if body is BasePlayer:
+		letterCanvas.ShowLetter()
+		letterArea.hide()

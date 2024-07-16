@@ -27,7 +27,6 @@ func die():
 	queue_free(); 
 
 
-
 func _on_HurtBoxComponent_parent_damaged(max_health, health):
 	var _hit_material = load("res://shaders/hit_flash.tres");
 	sprite.material = ShaderMaterial.new();

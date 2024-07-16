@@ -9,7 +9,7 @@ var maxLevels: int = 3
 var isLevel1Solved: bool = false
 var isLevel2Solved: bool = false
 var isLevel3Solved: bool = false
-
+var playerHealth = 5
 
 func _ready():
 	applyCustomMouseCursor();

@@ -15,7 +15,5 @@ func take_damage(attack: Attack):
 		var _parent = get_parent();
 		if _parent:
 			pass
-#			var _tween = get_tree().create_tween();
-#			_tween.tween_property(_parent, "modulate", Color(7,7,7), 0.1);
-#			_tween.tween_property(_parent, "modulate", Color(1,1,1), 0.3);
+#
 

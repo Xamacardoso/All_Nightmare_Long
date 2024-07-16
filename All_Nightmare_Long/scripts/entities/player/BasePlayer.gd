@@ -20,6 +20,7 @@ export var damage: float = 5;
 
 func _ready():
 	Global.player = self
+	hurtbox.health_component.health = Global.playerHealth
 
 
 func _physics_process(delta):
@@ -90,3 +91,5 @@ func _on_damage(max_health, health):
 	var _tween = get_tree().create_tween();
 	_tween.tween_property(sprite.material, "shader_param/flash_value", 1.0, 0.05);
 	_tween.tween_property(sprite.material, "shader_param/flash_value", 0, 0.3);
+	Global.playerHealth = health
+	print(Global.playerHealth)

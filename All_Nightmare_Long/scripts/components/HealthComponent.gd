@@ -1,7 +1,7 @@
 extends Node2D
 class_name HealthComponent
 
-export var MAX_HEALTH : int = 10;
+export var MAX_HEALTH: int;
 var health: int;
 
 func _ready():

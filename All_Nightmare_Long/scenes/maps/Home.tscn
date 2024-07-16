@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=2]
+[gd_scene load_steps=133 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/houseTile.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/tileset/coneFilter.png" type="Texture" id=10]
 [ext_resource path="res://scenes/levels/levelUtils/Portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/ui/carta.png" type="Texture" id=12]
+[ext_resource path="res://scenes/levels/levelUtils/Letter.tscn" type="PackedScene" id=13]
 
 [sub_resource type="OccluderPolygon2D" id=71]
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -822,6 +823,9 @@ extents = Vector2( 37, 14 )
 [sub_resource type="CircleShape2D" id=117]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id=119]
+radius = 22.0227
+
 [node name="Home" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -877,27 +881,32 @@ shadow_filter = 2
 current = true
 
 [node name="CollectableBoomerang" type="Area2D" parent="."]
-position = Vector2( 771, 51 )
+position = Vector2( 800, -255 )
 
 [node name="Sprite" type="Sprite" parent="CollectableBoomerang"]
+rotation = -0.436332
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableBoomerang"]
 shape = SubResource( 117 )
 
-[node name="Letter" type="Area2D" parent="."]
-position = Vector2( 377, 297 )
+[node name="LetterArea" type="Area2D" parent="."]
+position = Vector2( 772, 59 )
 
-[node name="Letter" type="CanvasLayer" parent="Letter"]
-
-[node name="Sprite" type="Sprite" parent="Letter"]
+[node name="Sprite" type="Sprite" parent="LetterArea"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LetterArea"]
+visible = false
+shape = SubResource( 119 )
 
 [node name="Canvas" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Canvas"]
 color = Color( 0.419608, 0.419608, 0.419608, 1 )
+
+[node name="LetterCanvas" parent="Canvas" instance=ExtResource( 13 )]
 
 [node name="pauseScreen" parent="Canvas" instance=ExtResource( 6 )]
 visible = false
@@ -926,6 +935,7 @@ visible = false
 polygon = PoolVector2Array( 704, 160, 832, 160, 832, 144, 976, 144, 976, -360, 600, -360, 600, 128, 704, 128 )
 
 [connection signal="body_entered" from="CollectableBoomerang" to="." method="_on_Boomerang_body_entered"]
+[connection signal="body_entered" from="LetterArea" to="." method="_on_Letter_body_entered"]
 [connection signal="body_entered" from="Canvas/hiddenAreas/hiddenArea2" to="." method="_on_hiddenArea2_body_entered"]
 [connection signal="body_exited" from="Canvas/hiddenAreas/hiddenArea2" to="." method="_on_hiddenArea2_body_exited"]
 

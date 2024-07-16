@@ -1,9 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/components/HurtBoxComponent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/components/HitBoxComponent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/entities/enemies/cyclops_bat/Idle_Fly.png" type="Texture" id=3]
 [ext_resource path="res://scripts/entities/enemies/BaseEnemy.gd" type="Script" id=4]
+[ext_resource path="res://shaders/hit_flash.tres" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 5 )
+shader_param/flash_color = null
+shader_param/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -51,6 +57,7 @@ script = ExtResource( 4 )
 damage = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 11 )
 frames = SubResource( 7 )
 animation = "fly"
 
@@ -74,6 +81,9 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="HurtBoxComponent" index="0"]
 position = Vector2( 1, 0 )
 shape = SubResource( 10 )
+
+[node name="HealthComponent" parent="HurtBoxComponent" index="1"]
+MAX_HEALTH = 20
 
 [connection signal="parent_damaged" from="HurtBoxComponent" to="." method="_on_HurtBoxComponent_parent_damaged"]
 
